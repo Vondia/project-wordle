@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-function Input({ guess, setGuess }) {
+function Input({ setGuess }) {
 const [newGuess, setNewGuess] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-   setGuess((prevGuesses) => [...prevGuesses, { guess: newGuess, id: crypto.randomUUID() }])
+   setGuess((prevGuesses) => [...prevGuesses, newGuess])
    setNewGuess('');
   };
 
