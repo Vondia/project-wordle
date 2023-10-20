@@ -6,6 +6,8 @@ import Input from '../Input';
 import GuessHistory from '../GuessHistory';
 import { checkGuess } from '../../game-helpers';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import WonBanner from '../WonBanner/WonBanner';
+import LostBanner from '../LostBanner/LostBanner';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -32,6 +34,8 @@ function Game() {
     {gameStatus}
       <GuessHistory guess={guess} answer={answer} />
       <Input handleSubmitGuess={handleSubmitGuess} gameStatus={gameStatus} />
+      {gameStatus === 'won' && <WonBanner numOfGuesses={guess.length} />}
+      {gameStatus === 'lost' && <LostBanner answer={answer} />}
     </>
   );
 }
