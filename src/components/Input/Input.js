@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Input({ handleSubmitGuess }) {
+function Input({ handleSubmitGuess, gameStatus }) {
   const [tentativeGuess, setTentativeGuess] = useState('');
 
   const handleSubmit = (event) => {
@@ -17,6 +17,7 @@ function Input({ handleSubmitGuess }) {
           required
           minLength={5}
           maxLength={5}
+          disabled={gameStatus !== 'running'}
           pattern="[a-zA-Z]{5}"
           title="5 letter word"
           id="guess-input"
